@@ -184,6 +184,9 @@ input[type="radio"] {
             }
                
          }
+         
+         $("#adminForm").attr("inapplysend.action");
+         $("#adminForm").submit();
       });
       
      /*  $(".download").click(function()
@@ -367,7 +370,8 @@ input[type="radio"] {
 
 			<div class="middle">
 				<div class="top">
-					<h1>사업자 등록 인증</h1>
+					<h1>사업자 등록 인증 요청서</h1>
+					<input type="hidden" name="in_apply_num" value="${in_apply_num}">
 					<hr>
 				</div>
 
@@ -449,9 +453,9 @@ input[type="radio"] {
 							<p class="inputform" id="st_place_num">${in.st_tel }</p>
 						</div>
 					</div>
-
-					<c:if test="${state ne '처리완료' }">
 					
+					
+					<c:if test="${param.state eq '미확인' }">
 						<div class="checkLabel">
 							<label class="label">
 							<input type="radio" class="check" name="res" id="approve"><span>승인</span></label>
@@ -472,7 +476,7 @@ input[type="radio"] {
 						</div>
 						
 					</c:if>
-					<c:if test="${state eq '처리완료' }">
+					<c:if test="${param.state ne '미확인' }">
 						<br><br>
 						<div class="igroup" style="width: 100%; color: red; font-size: 20pt; text-align: center; width: 570px; margin: 0 auto;">
 							처리가 완료된 사업자 등록 인증 요청서 입니다.
